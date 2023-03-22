@@ -1,0 +1,13 @@
+from collections import Counter
+class Solution:
+    def longestPalindrome(self, s: str) -> int:
+        a = Counter(s)
+        x = a.values()
+        c=0
+        for i in x:
+            if i%2==1:
+                c+=1
+        if c<=1:
+            return len(s)
+        else:
+            return len(s)-c+1
