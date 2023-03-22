@@ -1,0 +1,9 @@
+import numpy
+class Solution:
+    def matrixReshape(self, mat: List[List[int]], r: int, c: int) -> List[List[int]]:
+        d = numpy.array(mat)
+        try:
+            c = d.reshape(r,c)
+            return c
+        except:
+            return mat
