@@ -1,0 +1,1 @@
+s = s[::-1] creates a new reference of s inorder to not modify the reference and with O(1) complexity simply s[:] = s[::-1] is used
