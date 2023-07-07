@@ -5,4 +5,5 @@ class Solution:
         if x<0:
             return False
         s = a[::-1]
+        print("hello")
         return a==s
