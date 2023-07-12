@@ -1,0 +1,14 @@
+Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.
+
+code:
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        l = []
+        k = k%len(nums)
+        l.extend(nums[len(nums)-k:])
+        l.extend(nums[:len(nums)-k])
+        nums.clear()
+        nums.extend(l)
