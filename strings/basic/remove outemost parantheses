@@ -1,0 +1,20 @@
+A valid parentheses string is either empty "", "(" + A + ")", or A + B, where A and B are valid parentheses strings, and + represents string concatenation.
+
+For example, "", "()", "(())()", and "(()(()))" are all valid parentheses strings.
+
+example:
+Input: s = "(()())(())"
+Output: "()()()"
+Explanation: 
+The input string is "(()())(())", with primitive decomposition "(()())" + "(())".
+After removing outer parentheses of each part, this is "()()" + "()" = "()()()".
+
+code:
+class Solution:
+    def removeOuterParentheses(self, s: str) -> str:
+        res,opened = [],0
+        for i in s:
+            if i=='(' and opened>0:res.append(i)
+            if i==')' and opened>1:res.append(i)
+            opened+=1 if i=='(' else -1
+        return "".join(res)
