@@ -19,7 +19,7 @@ def pop(stack):
       
     return stack.pop() 
 
-********************QUEUES************************
+********************QUEUES************************  javatpoint
 class Queue:
  
     # To initialize the object.
