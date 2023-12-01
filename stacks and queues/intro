@@ -1,0 +1,56 @@
+# Function to create a stack. It initializes size of stack as 0 
+def createStack(): 
+    stack = [] 
+    return stack 
+  
+# Stack is empty when stack size is 0 
+def isEmpty(stack): 
+    return len(stack) == 0
+  
+# Function to add an item to stack. It increases size by 1 
+def push(stack, item): 
+    stack.append(item) 
+    print(item + " pushed to stack ") 
+      
+# Function to remove an item from stack. It decreases size by 1 
+def pop(stack): 
+    if (isEmpty(stack)): 
+        return str(-maxsize -1) # return minus infinite 
+      
+    return stack.pop() 
+
+********************QUEUES************************
+class Queue:
+ 
+    # To initialize the object.
+    def __init__(self, c):
+ 
+        self.queue = []
+        self.front = self.rear = 0
+        self.capacity = c
+ 
+    # Function to insert an element
+    # at the rear of the queue
+    def queueEnqueue(self, data):
+ 
+        # Check queue is full or not
+        if(self.capacity == self.rear):
+            print("\nQueue is full")
+ 
+        # Insert element at the rear
+        else:
+            self.queue.append(data)
+            self.rear += 1
+ 
+    # Function to delete an element
+    # from the front of the queue
+    def queueDequeue(self):
+ 
+        # If queue is empty
+        if(self.front == self.rear):
+            print("Queue is empty")
+ 
+        # Pop the front element from list
+        else:
+            x = self.queue.pop(0)
+            self.rear -= 1
