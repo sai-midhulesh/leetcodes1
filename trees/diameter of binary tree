@@ -14,10 +14,17 @@ Output: 1
 
 class Solution:
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
-        # Implement depth
+        diameter = 0
         def depth(node: Optional[TreeNode]) -> int:
-            if node:
-                return 1 + max(depth(node.left), depth(node.right))
-            else:
+            nonlocal diameter
+            if node is None:
                 return 0
-        return depth(root.left) + depth(root.right)
+
+            left = depth(node.left)
+            right = depth(node.right)
+
+            diameter = max(diameter, left + right)
+            return 1 + max(left, right)
+
+        depth(root)
+        return diameter
