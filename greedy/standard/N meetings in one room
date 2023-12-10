@@ -1,0 +1,43 @@
+There is one meeting room in a firm. There are N meetings in the form of (start[i], end[i]) where start[i] is start time of meeting i and end[i] is finish time of meeting i.
+What is the maximum number of meetings that can be accommodated in the meeting room when only one meeting can be held in the meeting room at a particular time?
+
+Note: Start time of one chosen meeting can't be equal to the end time of the other chosen meeting.
+
+Input:
+N = 6
+start[] = {1,3,0,5,8,5}
+end[] =  {2,4,6,7,9,9}
+Output: 
+4
+Explanation:
+Maximum four meetings can be held with
+given start and end timings.
+The meetings are - (1, 2),(3, 4), (5,7) and (8,9)
+
+class Solution:
+    
+    #Function to find the maximum number of meetings that can
+    #be performed in a meeting room.
+    def maximumMeetings(self,n,start,end):
+        meetings = list(zip(start, end, range(1, len(start) + 1)))
+        #meetings = [(1, 2, 1), (3, 4, 2), (0, 6, 3), (5, 7, 4), (8, 9, 5), (5, 9, 6)]
+
+
+    # Sort meetings based on end times
+        meetings.sort(key=lambda x: x[1])
+        
+# After sorting:
+# [(1, 2, 1), (3, 4, 2), (5, 7, 4), (8, 9, 5), (0, 6, 3), (5, 9, 6)]
+
+
+    # Initialize variables
+        selected_meetings = []
+        end_time = 0
+
+    # Iterate through sorted meetings and select non-overlapping meetings
+        for meeting in meetings:
+            if meeting[0] > end_time:
+                selected_meetings.append(meeting[2])
+                end_time = meeting[1]
+
+        return len(selected_meetings)
