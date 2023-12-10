@@ -1,0 +1,44 @@
+Given below is a binary tree. The task is to print the top view of binary tree. 
+Top view of a binary tree is the set of nodes visible when the tree is viewed from the top. For the given below tree
+
+       1
+    /     \
+   2       3
+  /  \    /   \
+4    5  6   7
+
+Top view will be: 4 2 1 3 7
+Note: Return nodes from leftmost node to rightmost node.
+Also if 2 nodes are outside the shadow of the tree and are at same position then consider the left ones only(i.e. leftmost). 
+
+class Solution:
+    
+    #Function to return a list of nodes visible from the top view 
+    #from left to right in Binary Tree.
+    def topView(self,root):
+        if not root:
+            return []
+
+        result = []
+        queue = deque([(root, 0)])  # Each element is a tuple (node, horizontal distance)
+
+    # Dictionary to store the leftmost node for each horizontal distance
+        top_view_dict = {}
+
+        while queue:
+            node, hd = queue.popleft()
+
+        # If the horizontal distance is not in the dictionary, add the node
+            if hd not in top_view_dict:
+                top_view_dict[hd] = node.data
+
+        # Enqueue left and right children with updated horizontal distance
+            if node.left:
+                queue.append((node.left, hd - 1))
+            if node.right:
+                queue.append((node.right, hd + 1))
+
+    # Extract the values from the dictionary, sorted by horizontal distance
+        sorted_top_view = [top_view_dict[hd] for hd in sorted(top_view_dict.keys())]
+
+        return sorted_top_view
